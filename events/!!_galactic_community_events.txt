@@ -1,0 +1,227 @@
+namespace = galcom
+
+# Proposal to form the Galactic Community (HIDDEN)
+event = {
+    id = galcom.1
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        NOR = {
+            has_global_flag = galactic_community_founded
+            has_global_flag = galcom_founding_begun
+        }
+        count_playable_country = { # minimum 3 countries
+            count >= 3
+        }
+        any_playable_country = {
+            perc_communications_with_playable >= 0.7
+        }
+    }
+
+    immediate = {
+        set_global_flag = galcom_founding_begun
+        random_playable_country = {
+            limit = {
+                perc_communications_with_playable >= 0.7
+                NOT = { has_country_flag = heir_of_the_khan_khan } #Galcom should for sure be formed by the time you can get this flag but hey, lets account for edge cases
+            }
+            country_event = { id = galcom.2 }
+            every_playable_country = {
+                limit = {
+                    NOT = { is_same_value = prev }
+                    has_communications = prev
+                    NOT = { has_country_flag = heir_of_the_khan_khan } #Galcom should for sure be formed by the time you can get this flag but hey, lets account for edge cases
+                }
+                country_event = { id = galcom.2 }
+            }
+        }
+        random_country = {
+            limit = { is_country_type = global_event }
+            country_event = { id = galcom.3 days = 360 }
+        }
+    }
+}
+
+# Invitation to join Galactic Community
+country_event = {
+    id = galcom.16
+    title = "galcom.5.name"
+    desc = "galcom.16.desc"
+    picture = GFX_evt_galactic_community
+    show_sound = event_galactic_community
+
+    is_triggered_only = yes
+
+    trigger = {
+        is_galactic_community_member = no
+        NOT = { has_country_flag = galcom_form_nay }
+    }
+
+    immediate = {
+        if = {
+            limit = {
+                OR = {
+                    has_country_flag = heir_of_the_khan_khan
+                }
+            }
+            set_country_flag = galcom_form_nay
+        }
+    }
+
+    option = {
+        name = galcom.16.a
+        add_to_galactic_community = yes
+        ai_chance = {
+            factor = 15
+            modifier = {
+                factor = 3
+                has_ethic = ethic_xenophile
+            }
+            modifier = {
+                factor = 10
+                has_ethic = ethic_fanatic_xenophile
+            }
+            modifier = {
+                factor = 10
+                OR = {
+                    has_civic = civic_diplomatic_corps
+                    has_civic = civic_public_relations_specialists
+                    has_civic = civic_hive_empath
+                    has_civic = civic_machine_servitor
+                }
+            }
+        }
+    }
+    option = {
+        name = galcom.16.b
+        trigger = {
+            is_homicidal = no
+        }
+        hidden_effect = {
+            set_country_flag = galcom_form_nay
+        }
+        ai_chance = {
+            factor = 5
+            modifier = {
+                factor = 3
+                has_ethic = ethic_xenophobe
+            }
+            modifier = {
+                factor = 10
+                has_ethic = ethic_fanatic_xenophobe
+            }
+        }
+    }
+    option = {
+        name = SCUM
+        trigger = {
+            has_civic = civic_fanatic_purifiers
+        }
+    }
+    option = {
+        name = INF_SCUM
+        trigger = {
+            OR = {
+                has_civic = civic_scorched_earth
+                has_civic = civic_hive_scorched_earth
+            }
+        }
+    }
+    option = {
+        name = galcom.16.c
+        trigger = {
+            has_menace_perk = menp_behemoth_ever_hungry
+        }
+    }
+    option = {
+        name = galcom.16.d
+        trigger = {
+            has_country_flag = heir_of_the_khan_khan
+            has_origin = origin_heirs_of_the_khan # Just to get the icon in the option
+        }
+    }
+    option = {
+        name = anomaly.3089.b
+        trigger = {
+            has_civic = civic_machine_terminator
+        }
+    }
+    option = {
+        name = anomaly.180.e
+        trigger = {
+            has_civic = civic_hive_devouring_swarm
+        }
+    }
+    option = { #This will make the Solarpunk Empire refuse to join the galcom until they return to the galaxy.
+        exclusive_trigger = {
+            has_country_flag = solarpunk_country
+            NOT = {
+                has_country_flag = solarpunk_returned
+            }
+        }
+        name = NO
+    }
+}
+
+# Another Proposal to form the Galactic Community (HIDDEN)
+country_event = {
+    id = galcom.20
+    hide_window = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        NOT = { has_global_flag = galactic_community_founded }
+    }
+
+    immediate = {
+        if = {
+            limit = {
+                count_playable_country = { # minimum 3 countries
+                    limit = {
+                        NOT = { has_country_flag = heir_of_the_khan_khan }
+                    }
+                    count >= 3
+                }
+                any_playable_country = {
+                    perc_communications_with_playable >= 0.5
+                    is_gestalt = no
+                    NOT = { has_country_flag = heir_of_the_khan_khan }
+                }
+            }
+            every_playable_country = {
+                remove_country_flag = galcom_form_aye
+                remove_country_flag = galcom_form_nay
+            }
+            random_playable_country = {
+                limit = {
+                    perc_communications_with_playable >= 0.5
+                    is_gestalt = no
+                    NOT = { has_country_flag = heir_of_the_khan_khan }
+                }
+                country_event = { id = galcom.2 }
+                every_playable_country = {
+                    limit = {
+                        has_communications = prev
+                        NOT = { has_country_flag = heir_of_the_khan_khan }
+                    }
+                    country_event = { id = galcom.2 }
+                }
+            }
+            random_country = {
+                limit = { is_country_type = global_event }
+                country_event = { id = galcom.3 days = 360 }
+            }
+        }
+        # Conditions not met - try again in 50 years
+        else = {
+            random_country = {
+                limit = { is_country_type = global_event }
+                country_event = { id = galcom.20 days = 18000 }
+            }
+        }
+    }
+}
+

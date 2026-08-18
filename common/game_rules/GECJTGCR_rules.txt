@@ -1,0 +1,51 @@
+# This = country
+can_be_part_of_galactic_community = {
+    custom_tooltip = {
+        fail_text = "community_default_failtext"
+        OR = {
+            is_country_type = default
+            AND = {
+                is_country_type = awakened_fallen_empire
+                has_country_flag = fallen_empire_hive_control
+            }
+        }
+    }
+    custom_tooltip = {
+        fail_text = "community_homicidal_failtext"
+        NOR = {
+            has_menace_perk = menp_behemoth_ever_hungry
+            has_country_flag = heir_of_the_khan_khan
+        }
+    }
+    custom_tooltip = {
+        fail_text = "community_declared_crisis_failtext"
+        has_been_declared_crisis = no
+        NOT = { has_country_flag = malevolent_aura_empire }
+    }
+    custom_tooltip = {
+        fail_text = "community_declared_crisis_failtext"
+        OR = {
+            NOT = { exists = overlord }
+            overlord = {
+                has_been_declared_crisis = no
+                NOT = { has_country_flag = malevolent_aura_empire }
+            }
+        }
+    }
+}
+
+# This = country
+can_use_galactic_market = {
+    is_country_type = default
+}
+
+# This = country
+can_be_part_of_galactic_council = {
+    OR = {
+        is_country_type = default
+        has_country_flag = fallen_empire_hive_control
+    }
+    NOR = {
+        has_menace_perk = menp_behemoth_ever_hungry
+    }
+}
