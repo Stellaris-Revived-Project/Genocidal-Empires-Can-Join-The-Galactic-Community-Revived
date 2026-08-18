@@ -15,7 +15,9 @@ Unless otherwise stated, I do **not** claim ownership of the original work. Full
 
 **Original Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2435608776)
 
-**Revived Mod Page:** [Steam Workshop]() - TBA
+**Revived Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3785880681)
+
+**Revived Source Repository:** [Github Repository](https://github.com/Stellaris-Revived-Project/Genocidal-Empires-Can-Join-The-Galactic-Community-Revived)
 
 You are free to use, modify, copy, and redistribute this mod, including publishing modified or derivative versions, provided that the mod or its derivatives upholds the Paradox Interactive End-User License Agreement.
 Please retain credit to the original creator and, where applicable, the current maintainer. This permission does not grant any rights to Stellaris, Paradox Interactive's assets, or other third-party content.
