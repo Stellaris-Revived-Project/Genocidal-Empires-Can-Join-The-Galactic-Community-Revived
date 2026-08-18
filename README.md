@@ -4,16 +4,8 @@
 
 ## About
 
-This repository contains an remade version of **Genocidals Can Join The Galactic Community**. The goal is to fix compatibility issues, resolve bugs and ensure the mod remains available for the community.
+This repository contains a remade version of **Genocidals Can Join The Galactic Community**. The goal is to fix compatibility issues, resolve bugs and ensure the mod remains available for the community.
 Unless otherwise stated, I do **not** claim ownership of the original work. Full credit belongs to the original creator(s).
-
----
-
-## License
-
-This mod is provided under a **non-commercial permission license**. You are free to use, modify, copy, and redistribute this mod, including publishing modified or derivative versions, provided that no monetary gain is made from the mod or its derivatives.
-
-Please retain credit to the original creator and, where applicable, the current maintainer. This permission does not grant any rights to Stellaris, Paradox Interactive's assets, or other third-party content.
 
 ---
 
@@ -23,7 +15,10 @@ Please retain credit to the original creator and, where applicable, the current 
 
 **Original Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2435608776)
 
-*Revived Mod Page:** [Steam Workshop]() - TBA
+**Revived Mod Page:** [Steam Workshop]() - TBA
+
+You are free to use, modify, copy, and redistribute this mod, including publishing modified or derivative versions, provided that the mod or its derivatives upholds the Paradox Interactive End-User License Agreement.
+Please retain credit to the original creator and, where applicable, the current maintainer. This permission does not grant any rights to Stellaris, Paradox Interactive's assets, or other third-party content.
 
 ---
 
